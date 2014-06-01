@@ -1,13 +1,13 @@
-# -*- coding:cp857 -*-
+# -*- coding:utf-8 -*-
 __author__ = 'ka1nsha'
 from tkinter import *
 import sqlite3
 from tkinter.messagebox import *
 from tkinter import ttk
-# ###### Veritaban¿ ba¿lant¿s¿ #######
+# ###### VeritabanÄ± baÄŸlantÄ±sÄ± #######
 db = sqlite3.connect("db.db3")
 cursor = db.cursor()
-# ####### Veritaban¿ ba¿lant¿s¿ ######
+# ####### VeritabanÄ± baÄŸlantÄ±sÄ± ######
 
 
 def kgirisi():
@@ -27,18 +27,18 @@ def kgirisi():
         else:
             kadi.delete(0, END)
             sifre.delete(0, END)
-            showwarning("Hata", "E¿le¿tirilemedi,Lütfen tekrar deneyiniz!")
+            showwarning("Hata", "EÅŸleÅŸtirilemedi,LÃ¼tfen tekrar deneyiniz!")
 
-# ##Ana i¿lemler #####
+# ##Ana iÅŸlemler #####
 mainwindow = Tk()
 mainwindow.geometry("1000x600+200+50")
 mainwindow.resizable(width=False, height=False)
 pencere = Frame(mainwindow)
-mainwindow.wm_title("Ö¿renci Otomasyon Sistemi")
+mainwindow.wm_title("Ã–ÄŸrenci Otomasyon Sistemi")
 pencere.pack()
-lBilgi = Label(pencere, text="Lütfen giri¿ yap¿n¿z", font="Arial 30 bold")
+lBilgi = Label(pencere, text="LÃ¼tfen giriÅŸ yapÄ±nÄ±z", font="Arial 30 bold")
 lBilgi.pack()
-# ## Ana i¿lemler ####
+# ## Ana iÅŸlemler ####
 # ########### Ana pencere ###################
 
 
@@ -47,20 +47,20 @@ def anapencere():
 
     arac = LabelFrame(pencere, text="Yetkili", width="600")
 
-    bilgi = Label(arac, text="Giri¿ yapan yönetici : %s" % veriler1)
+    bilgi = Label(arac, text="GiriÅŸ yapan yÃ¶netici : %s" % veriler1)
     bilgi.pack(side=LEFT)
     arac.pack(side=LEFT)
     sorgu1 = cursor.execute("select * from ogrenciler order by isim desc")
     sorgucek = sorgu1.fetchall()
     # ######## TTK ################
     container = Frame(width="600")
-    tablokismi = LabelFrame(container, text="Kay¿tlar")
+    tablokismi = LabelFrame(container, text="KayÄ±tlar")
 
     tablo = ttk.Treeview(tablokismi, columns=("isim", "okulno", "tel"))
 
     tablo.heading("isim", text="Ad ve Soyad :")
-    tablo.heading("okulno", text="Numaras¿ :")
-    tablo.heading("tel", text="Ebeveyn Telefon numaras¿ :")
+    tablo.heading("okulno", text="NumarasÄ± :")
+    tablo.heading("tel", text="Ebeveyn Telefon numarasÄ± :")
 
     tablo["show"] = "headings"
 
@@ -75,18 +75,18 @@ def anapencere():
     tablokismi.pack(side=RIGHT, padx="20", expand=YES, fill=BOTH)
     # ### Sol Butonlar ###
 
-    oEkle = Button(container, text="Ö¿renci Ekle").pack(padx="20", pady="20")
+    oEkle = Button(container, text="Ã–ÄŸrenci Ekle").pack(padx="20", pady="20")
 
     container.pack(side=TOP)
     # ### Sol butonlar ###
 # ########## Ana pencere #####################
 
-# ####Kullan¿c¿ Giri¿i #######
+# ####KullanÄ±cÄ± GiriÅŸi #######
 login = Toplevel()
-login.wm_title("Yetkili giri¿i")
+login.wm_title("Yetkili giriÅŸi")
 login.geometry("200x130+400+200")
 login.resizable(width=False, height=False)
-bilgi1 = Label(login, text="Kullan¿c¿ Ad¿:")
+bilgi1 = Label(login, text="KullanÄ±cÄ± AdÄ±:")
 bilgi1.pack()
 kadi = Entry(login)
 kadi.pack()
@@ -94,10 +94,10 @@ bilgi2 = Label(login, text="Parola:")
 bilgi2.pack()
 sifre = Entry(login, show="*")
 sifre.pack()
-onay = Button(login, text="Giri¿", command=kgirisi)
+onay = Button(login, text="GiriÅŸ", command=kgirisi)
 onay.pack()
 login.transient(pencere)
-# ####### Kullan¿c¿ Giri¿i ######
+# ####### KullanÄ±cÄ± GiriÅŸi ######
 
 
 mainloop()
