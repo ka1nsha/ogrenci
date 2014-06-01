@@ -1,22 +1,23 @@
-#-*- coding:cp857 -*-
+# -*- coding:utf-8 -*-
 
 __author__ = 'ka1nsha'
 import os
 import sqlite3
 dbkontrol = os.path.exists("db.db3")
+
+
 def yetkiliolustur():
-    db  = sqlite3.connect("db.db3")
+    db = sqlite3.connect("db.db3")
     cursor = db.cursor()
     cursor.execute("""CREATE TABLE yetkili(kadi text,
-    sifre text)"""
-    )
+    sifre text)""")
     cursor.execute("""CREATE TABLE ogrenciler(isim text,okulno integer,tel integer)""")
-    yAdi = input("Yînetici adç:")
-    ySifre = input("Yînetici üifresi:")
-    cursor.execute("""INSERT INTO yetkili values(?,?)""", (yAdi,ySifre))
+    yonetici_adi = input("Y√∂netici adƒ±:")
+    yonetici_sifre = input("Y√∂netici ≈üifresi:")
+    cursor.execute("""INSERT INTO yetkili values(?,?)""", (yonetici_adi, yonetici_sifre))
     db.commit()
-if dbkontrol == False:
+if not dbkontrol:
     yetkiliolustur()
 else:
-    print("Yetkilendirme iülemi zaten yapçlmçü")
+    print("Yetkilendirme i≈ülemi zaten yapƒ±lmƒ±≈ü")
 
