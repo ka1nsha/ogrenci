@@ -12,12 +12,12 @@ def yetkiliolustur():
     cursor.execute("""CREATE TABLE yetkili(kadi text,
     sifre text)""")
     cursor.execute("""CREATE TABLE ogrenciler(isim text,okulno integer,tel integer)""")
-    yonetici_adi = input("Yönetici ad¿:")
-    yonetici_sifre = input("Yönetici ¿ifresi:")
+    yonetici_adi = input("YÃ¶netici adÄ±:")
+    yonetici_sifre = input("YÃ¶netici ÅŸifresi:")
     cursor.execute("""INSERT INTO yetkili values(?,?)""", (yonetici_adi, yonetici_sifre))
     db.commit()
 if not dbkontrol:
     yetkiliolustur()
 else:
-    print("Yetkilendirme i¿lemi zaten yap¿lm¿¿")
+    print("Yetkilendirme iÅŸlemi zaten yapÄ±lmÄ±ÅŸ")
 
